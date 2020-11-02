@@ -3,7 +3,6 @@ import os
 import re
 import subprocess
 from functools import partial
-from io import StringIO
 from itertools import islice
 from os import makedirs
 from os.path import splitext, join, dirname, basename, relpath, normpath
