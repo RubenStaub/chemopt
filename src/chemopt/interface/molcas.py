@@ -167,7 +167,7 @@ def generate_input_file(molecule, hamiltonian, basis, el_calc_input,
 
     Args:
         molecule (chemcoord.Cartesian or chemcoord.Zmat or str):
-            If it is a string, it has to be a valid xyz-file.
+            If it is a string, it has to be a valid xyz-filename.
         hamiltonian (str): {hamiltonian}
         basis (str): {basis}
         charge (int): {charge}
@@ -181,7 +181,7 @@ def generate_input_file(molecule, hamiltonian, basis, el_calc_input,
         str : molcas input.
     """
     if isinstance(molecule, str):
-        molecule = cc.Cartesian.read_xyz(StringIO(molecule))
+        molecule = cc.Cartesian.read_xyz(molecule)
     elif isinstance(molecule, cc.Zmat):
         molecule = molecule.get_cartesian()
 
