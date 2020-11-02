@@ -163,7 +163,7 @@ def generate_input_file(molecule, hamiltonian, basis,
         str : Molpro input.
     """
     if isinstance(molecule, str):
-        molecule = molecule.read_xyz(StringIO(molecule))
+        molecule = cc.Cartesian.read_xyz(StringIO(molecule))
     elif isinstance(molecule, cc.Zmat):
         molecule = molecule.get_cartesian()
     if mem_per_proc is None:
