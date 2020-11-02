@@ -1,7 +1,6 @@
 import inspect
 import os
 import subprocess
-from io import StringIO
 from os.path import splitext
 from subprocess import run
 from datasize import DataSize
@@ -148,7 +147,7 @@ def generate_input_file(molecule, hamiltonian, basis,
 
     Args:
         molecule (chemcoord.Cartesian or chemcoord.Zmat or str):
-            If it is a string, it has to be a valid xyz-file.
+            If it is a string, it has to be a valid xyz-filename.
         hamiltonian (str): {hamiltonian}
         basis (str): {basis}
         charge (int): {charge}
@@ -163,7 +162,7 @@ def generate_input_file(molecule, hamiltonian, basis,
         str : Molpro input.
     """
     if isinstance(molecule, str):
-        molecule = cc.Cartesian.read_xyz(StringIO(molecule))
+        molecule = cc.Cartesian.read_xyz(molecule)
     elif isinstance(molecule, cc.Zmat):
         molecule = molecule.get_cartesian()
     if mem_per_proc is None:
